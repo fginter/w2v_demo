@@ -1,0 +1,3 @@
+[submodule "wvlib_light"]
+	path = wvlib_light
+	url = https://github.com/fginter/wvlib_light.git
