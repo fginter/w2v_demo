@@ -1,7 +1,7 @@
 $(function(){
 	$('#nearestform').submit(function(e){
 		$.ajax({
-			url: '/nearest',
+			url: $APP_ROOT+'/nearest',
 			data: $('form').serialize(),
 			type: 'POST',
 			success: function(response){

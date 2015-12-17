@@ -3,7 +3,7 @@ from flask import Flask
 import flask
 import json
 
-app = Flask(__name__)
+app = Flask("wv_demo")
 
 @app.route("/")
 def index():
@@ -23,7 +23,7 @@ def nearest():
 
 
 #Init stuff (I'm sure there's a better way)
-wv=wvlib.WV.load("pb34_wf_200_v2.bin",50000,1000000)
+wv=wvlib.WV.load("pb34_wf_200_v2.bin",5000,10000)
 
 if __name__ == '__main__':
     app.run(debug=True)
