@@ -1,5 +1,5 @@
 $(function(){
-	$('#submitword').click(function(){
+	$('#nearestform').submit(function(e){
 		$.ajax({
 			url: '/nearest',
 			data: $('form').serialize(),
@@ -12,5 +12,6 @@ $(function(){
 				console.log(error);
 			}
 		});
+	    e.preventDefault();
 	});
 });
