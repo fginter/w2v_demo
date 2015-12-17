@@ -1,17 +1,26 @@
-$(function(){
-	$('#nearestform').submit(function(e){
-		$.ajax({
-			url: $APP_ROOT+'/nearest',
-			data: $('form').serialize(),
-			type: 'POST',
-			success: function(response){
-			    var respdata=jQuery.parseJSON(response)
-			    $('#result').html(respdata.tbl);
-			},
-			error: function(error){
-				console.log(error);
-			}
-		});
-	    e.preventDefault();
+//hooks a form frm and result div resdiv to ajax path path
+function ahook(frm,resdiv,path) {
+    console.log("running ahook",frm, resdiv,path);
+    $(frm).submit(function(e){
+	$.ajax({
+	    url: $APP_ROOT+path,
+	    data: $(frm).serialize(),
+	    type: 'POST',
+	    success: function(response){
+		var respdata=jQuery.parseJSON(response)
+		$(resdiv).html(respdata.tbl);
+	    },
+	    error: function(error){
+		console.log(error);
+	    }
 	});
-});
+	e.preventDefault();
+    });
+}
+
+//I have no idea why I need to do this...
+$(function() {ahook('#nearestform','#nearestresult','/nearest');});
+$(function() {ahook('#analogyform','#analogyresult','/analogy');});
+
+
+

@@ -23,6 +23,7 @@
  
  <body>
    <div class="container">
+
      <h2 class="form-wordinput-heading">Nearest words </h2>
      <form class="form-inline" id="nearestform" role="form">
          <input type="text" class="form-control" id="word" name="word" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
@@ -43,7 +44,26 @@
 	   </select>
 	 </div>
      </form>
-     <div id="result" class="row" />      
+
+     <div id="nearestresult" class="row" ></div>      
+
+     <h2 class="form-wordinput-heading">Word analogy</h2>
+     <form class="form-inline" id="analogyform" role="form">
+         <input type="text" class="form-control" id="analogy_src1" name="analogy_src1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	 <input type="text" class="form-control" id="analogy_target1" name="analogy_target1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	 <input type="text" class="form-control" id="analogy_src2" name="analogy_src2" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	 <button id="submitanalogy" type="submit" class="btn btn-default btn-primary active form-control" role="button">Show</button>
+	 <div class="form-group">
+	   <label for="analogy_topn">Top N:</label>
+	   <select class="form-control" id="analogy_topn" name="analogy_topn">
+	     <option>5</option>
+	     <option selected>10</option>
+	     <option>20</option>
+	     <option>100</option>
+	   </select>
+	 </div>
+     </form>
+     <div id="analogyresult" class="row" ></div>      
    </div>
  </body>
  </html>
