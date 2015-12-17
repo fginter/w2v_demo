@@ -1,7 +1,5 @@
 $(function(){
-	$('button').click(function(){
-	    var user = $('#txtUsername').val();
-	    var pass = $('#txtPassword').val();
+	$('#submitword').click(function(){
 		$.ajax({
 			url: '/nearest',
 			data: $('form').serialize(),
