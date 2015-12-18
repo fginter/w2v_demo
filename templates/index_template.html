@@ -25,6 +25,8 @@
    <div class="container">
 
      <h2 class="form-wordinput-heading">Nearest words </h2>
+     <p> Given a Finnish word, this demo shows a list of other words that are similar
+       to it, i.e. nearby in the vector space.</p>
      <form class="form-inline" id="nearestform" role="form">
          <input type="text" class="form-control" id="word" name="word" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
 	 <button id="submitword" type="submit" class="btn btn-default btn-primary active form-control" role="button">Show nearest</button>
@@ -48,6 +50,7 @@
      <div id="nearestresult" class="row" ></div>      
 
      <h2 class="form-wordinput-heading">Word analogy</h2>
+     <p> This demo computes word analogy: the first word is to the second word like the third word is to which word? Try for example <em>ilma - lintu - vesi (air - bird - water)</em> which would expect to return <em>kala (fish)</em> because fish is to water like birs is to air. Other cases could be for example <em>sammakko - hyppää - kala</em>. This is however only a toy to show what is possible - most of the time the analogy does not work particularly well (at least for the Finnish data).</p>
      <form class="form-inline" id="analogyform" role="form">
          <input type="text" class="form-control" id="analogy_src1" name="analogy_src1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
 	 <input type="text" class="form-control" id="analogy_target1" name="analogy_target1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
@@ -56,8 +59,9 @@
 	 <div class="form-group">
 	   <label for="analogy_topn">Top N:</label>
 	   <select class="form-control" id="analogy_topn" name="analogy_topn">
+	     <option selected>1</option>
 	     <option>5</option>
-	     <option selected>10</option>
+	     <option>10</option>
 	     <option>20</option>
 	     <option>100</option>
 	   </select>
