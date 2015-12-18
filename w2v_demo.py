@@ -37,7 +37,7 @@ def analogy():
 
 
 #Init stuff (I'm sure there's a better way)
-wv=wvlib.WV.load("pb34_wf_200_v2.bin",50000,200000)
+wv=wvlib.WV.load("pb34_wf_200_v2.bin",400000,3000000)
 
 if __name__ == '__main__':
     app.run(debug=True)
