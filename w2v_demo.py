@@ -11,7 +11,7 @@ def index():
 
 @app.route('/nearest',methods=["POST"])
 def nearest():
-    word=flask.request.form['word']
+    word=flask.request.form['word'].strip()
     N=int(flask.request.form['topn'])
     top_n=wv.nearest(word,N)
     if top_n is None:
@@ -23,9 +23,9 @@ def nearest():
 
 @app.route('/analogy',methods=["POST"])
 def analogy():
-    src1=flask.request.form['analogy_src1']
-    target1=flask.request.form['analogy_target1']
-    src2=flask.request.form['analogy_src2']
+    src1=flask.request.form['analogy_src1'].strip()
+    target1=flask.request.form['analogy_target1'].strip()
+    src2=flask.request.form['analogy_src2'].strip()
     N=int(flask.request.form['analogy_topn'])
     top_n=wv.analogy(src1,target1,src2,N)
     if top_n is None:
