@@ -3,6 +3,15 @@ from flask import Flask
 import flask
 import json
 
+MAX_RANK_MEM=100000
+MAX_RANK=300000
+DEBUGMODE=False
+
+try:
+    from config_local import * #use to override the constants above if you like
+except ImportError:
+    pass #no config_local
+
 app = Flask("wv_demo")
 
 @app.route("/")
@@ -37,7 +46,7 @@ def analogy():
 
 
 #Init stuff (I'm sure there's a better way)
-wv=lwvlib.WV.load("pb34_wf_200_v2.bin",200000,4000000)
+wv=lwvlib.WV.load("pb34_wf_200_v2.bin",MAX_RANK_MEM,MAX_RANK)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=DEBUGMODE)
