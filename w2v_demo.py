@@ -34,8 +34,10 @@ def autocomplete():
     global autocomplete_index
     search = flask.request.args.get('term')
     result=[]
+    if search in wv.w_to_dim: #always make sure the search is there if it's a word
+        result.append(search)
     for s in autocomplete_index.get(search[:AUTOCOMPLETE_PREF],[]):
-        if s.startswith(search):
+        if s!=search and s.startswith(search):
             result.append(s)
             if len(result)>AUTOCOMPLETE_MAX_SUGGESTIONS:
                 break
