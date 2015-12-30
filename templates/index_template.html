@@ -15,10 +15,12 @@
  
      <!-- Bootstrap core CSS -->
      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+     <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet">
      <!-- Custom styles for this template -->
      <link href="{{ url_for('static', filename='css/w2vdemo.css') }}" rel="stylesheet">
      <script src="{{ url_for('static', filename='js/jquery-1.9.0.js') }}"> </script>
      <script src="{{ url_for('static', filename='js/w2vdemo.js') }}"> </script>
+     <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
   </head>
  
  <body>
@@ -28,7 +30,7 @@
      <p> Given a Finnish word, this demo shows a list of other words that are similar
        to it, i.e. nearby in the vector space.</p>
      <form class="form-inline" id="nearestform" role="form">
-         <input type="text" class="form-control" id="word" name="word" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+         <input type="text" class="form-control autocomplete" id="word" name="word" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
 	 <button id="submitword" type="submit" class="btn btn-default btn-primary active form-control" role="button">Show nearest</button>
 	 <div class="form-group">
 	   <label>Case sensitive:</label>
@@ -52,9 +54,9 @@
      <h2 class="form-wordinput-heading">Word analogy</h2>
      <p> This demo computes word analogy: the first word is to the second word like the third word is to which word? Try for example <em>ilma - lintu - vesi (air - bird - water)</em> which would expect to return <em>kala (fish)</em> because fish is to water like birs is to air. Other cases could be for example <em>sammakko - hyppää - kala</em>. This is however only a toy to show what is possible - most of the time the analogy does not work particularly well (at least for the Finnish data).</p>
      <form class="form-inline" id="analogyform" role="form">
-         <input type="text" class="form-control" id="analogy_src1" name="analogy_src1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
-	 <input type="text" class="form-control" id="analogy_target1" name="analogy_target1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
-	 <input type="text" class="form-control" id="analogy_src2" name="analogy_src2" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+         <input type="text" class="form-control autocomplete" id="analogy_src1" name="analogy_src1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	 <input type="text" class="form-control autocomplete" id="analogy_target1" name="analogy_target1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	 <input type="text" class="form-control autocomplete" id="analogy_src2" name="analogy_src2" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
 	 <button id="submitanalogy" type="submit" class="btn btn-default btn-primary active form-control" role="button">Show</button>
 	 <div class="form-group">
 	   <label for="analogy_topn">Top N:</label>

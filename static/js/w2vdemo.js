@@ -18,6 +18,14 @@ function ahook(frm,resdiv,path) {
     });
 }
 
+$(function() {
+    $( ".autocomplete" ).autocomplete({
+      source: $APP_ROOT+"/autocomplete",
+      minLength: 2,
+    });
+});
+  
+
 //I have no idea why I need to do this...
 $(function() {ahook('#nearestform','#nearestresult','/nearest');});
 $(function() {ahook('#analogyform','#analogyresult','/analogy');});
