@@ -1,4 +1,4 @@
-from wvlib_light import wvlib
+from wvlib_light import lwvlib
 from flask import Flask
 import flask
 import json
@@ -37,7 +37,7 @@ def analogy():
 
 
 #Init stuff (I'm sure there's a better way)
-wv=wvlib.WV.load("pb34_wf_200_v2.bin",40000,100000)
+wv=lwvlib.WV.load("pb34_wf_200_v2.bin",200000,4000000)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
