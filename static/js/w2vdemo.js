@@ -29,6 +29,7 @@ $(function() {
 //I have no idea why I need to do this...
 $(function() {ahook('#nearestform','#nearestresult','/nearest');});
 $(function() {ahook('#analogyform','#analogyresult','/analogy');});
+$(function() {ahook('#similarityform','#similarityresult','/similarity');});
 
 
 

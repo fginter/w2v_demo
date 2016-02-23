@@ -49,7 +49,20 @@
 	 </div>
      </form>
 
-     <div id="nearestresult" class="row" ></div>      
+     <div id="nearestresult" class="row" ></div>
+
+
+		<h2 class="form-wordinput-heading">Similarity of two words </h2>
+     <p> Given two Finnish words, this demo gives the similarity value between 1 and -1.</p>
+     <form class="form-inline" id="similarityform" role="form">
+         <input type="text" class="form-control autocomplete" id="similarity_w1" name="similarity_w1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	<input type="text" class="form-control autocomplete" id="similarity_w2" name="similarity_w2" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
+	 <button id="submitsimilarity" type="submit" class="btn btn-default btn-primary active form-control" role="button">Show similarity</button>
+
+     </form>
+
+     <div id="similarityresult" class="row" ></div>
+  
 
      <h2 class="form-wordinput-heading">Word analogy</h2>
      <p> This demo computes word analogy: the first word is to the second word like the third word is to which word? Try for example <em>ilma - lintu - vesi (air - bird - water)</em> which would expect to return <em>kala (fish)</em> because fish is to water like birs is to air. Other cases could be for example <em>sammakko - hyppää - kala</em>. This is however only a toy to show what is possible - most of the time the analogy does not work particularly well (at least for the Finnish data).</p>
@@ -69,7 +82,12 @@
 	   </select>
 	 </div>
      </form>
-     <div id="analogyresult" class="row" ></div>      
+     <div id="analogyresult" class="row" ></div>
+
+
+
+
+ 
      <h3>About</h3>
      <p>The demo is based on word embeddings induced using
      the <a href="https://code.google.com/archive/p/word2vec/">word2vec</a>

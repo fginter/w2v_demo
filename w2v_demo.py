@@ -69,6 +69,17 @@ def analogy():
         tbl=flask.render_template("result_tbl.html",words=top_n_words)
     return json.dumps({'tbl':tbl});
 
+@app.route('/similarity',methods=["POST"])
+def similarity():
+    w1=flask.request.form['similarity_w1'].strip()
+    w2=flask.request.form['similarity_w2'].strip()
+    sim=wv.similarity(w1,w2)
+    if sim is None:
+        tbl=flask.render_template("empty_result_tbl.html",word=u" and ".join(w for w in (w1,w2) if w not in wv.w_to_dim))
+    else:
+    	tbl=flask.render_template("result_tbl.html",words=[unicode(sim)])
+    return json.dumps({'tbl':tbl});
+
 
 #Init stuff (I'm sure there's a better way)
 wv=lwvlib.WV.load("pb34_wf_200_v2.bin",MAX_RANK_MEM,MAX_RANK)
