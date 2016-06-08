@@ -2,9 +2,12 @@
 function ahook(frm,resdiv,path) {
     console.log("running ahook",frm, resdiv,path);
     $(frm).submit(function(e){
+	data={};
+	data["form"]=$(frm).serializeArray();
+	data["model_name"]=$('#model_select').val();
 	$.ajax({
 	    url: $APP_ROOT+path,
-	    data: $(frm).serialize(),
+	    data: data,
 	    type: 'POST',
 	    success: function(response){
 		var respdata=jQuery.parseJSON(response)
@@ -20,7 +23,19 @@ function ahook(frm,resdiv,path) {
 
 $(function() {
     $( ".autocomplete" ).autocomplete({
-      source: $APP_ROOT+"/autocomplete",
+      source: function(request, response) {
+                $.ajax({
+                  url: $APP_ROOT+'/autocomplete',
+                  dataType: "json",
+                  data: {
+                    term : request.term,
+                    model_name : $('#model_select').val()
+                  },
+                  success: function(data) {
+                    response(data);
+                  }
+                });
+            },
       minLength: 2,
     });
 });
