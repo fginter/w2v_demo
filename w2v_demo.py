@@ -6,7 +6,7 @@ import yaml
 
 MAX_RANK_MEM=5000
 MAX_RANK=10000
-DEBUGMODE=False
+# DEBUGMODE=False  #set in config_local
 AUTOCOMPLETE_PREF=2
 AUTOCOMPLETE_MAX_SUGGESTIONS=5
 
@@ -15,7 +15,7 @@ try:
 except ImportError:
     pass #no config_local
 
-app = Flask("wv_demo")
+app = Flask(__name__)
 
 @app.route("/")
 def index():
