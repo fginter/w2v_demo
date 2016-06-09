@@ -1,0 +1,18 @@
+- name: Finnish 4B wordforms skipgram
+  location: /home/ginter/w2v/pb34_wf_200_v2_skgram.bin
+
+- name: Finnish 4B lemmas skipgram
+  location: /home/ginter/w2v/pb34_lemma_200_v2_skgram.bin
+  enable: False
+
+- name: Finnish 4B wordforms BOW
+  location: /home/ginter/w2v/pb34_wf_200_v2.bin
+
+- name: Suomi24 wordforms skipgram
+  location: /home/ginter/w2v/s24_wf_200_skgram.bin
+
+- name: Suomi24 lemmas skipgram
+  location: /home/ginter/w2v/s24_lemma_200_skgram.bin
+
+- name: English GoogleNews Negative300
+  location: /home/ginter/w2v/GoogleNews-vectors-negative300.bin
