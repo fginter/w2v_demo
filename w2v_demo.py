@@ -70,15 +70,10 @@ def val2dict(val):
 @app.route('/nearest',methods=["POST"])
 def nearest():
     global loaded_models
-    
-#    import pdb
-#    pdb.set_trace()
-    #The request is a dict where "form" is the form and "model_name" is, well, model_name :)
     values=val2dict(flask.request.values)
     word=values['word'].strip()
     model_name=values['model_name']
     N=int(values['topn'])
-    print("model name=",model_name,flush=True)
     wv=loaded_models[model_name]
     top_n=wv.nearest(word,N)
     if top_n is None:
@@ -90,13 +85,16 @@ def nearest():
 
 @app.route('/analogy',methods=["POST"])
 def analogy():
-    src1=flask.request.form['analogy_src1'].strip()
-    target1=flask.request.form['analogy_target1'].strip()
-    src2=flask.request.form['analogy_src2'].strip()
-    N=int(flask.request.form['analogy_topn'])
+    global loaded_models
+    values=val2dict(flask.request.values)
+    src1=values['analogy_src1'].strip()
+    target1=values['analogy_target1'].strip()
+    src2=values['analogy_src2'].strip()
+    N=int(values['analogy_topn'])
+    wv=loaded_models[values['model_name']]
     top_n=wv.analogy(src1,target1,src2,N)
     if top_n is None:
-        tbl=flask.render_template("empty_result_tbl.html",word=u" and ".join(w for w in (src1,target1,src2) if w not in wv.w_to_dim))
+        tbl=flask.render_template("empty_result_tbl.html",word=" and ".join(w for w in (src1,target1,src2) if w not in wv.w_to_dim))
     else:
         top_n_words=[w for s,w in top_n]
         tbl=flask.render_template("result_tbl.html",words=top_n_words)
@@ -104,13 +102,16 @@ def analogy():
 
 @app.route('/similarity',methods=["POST"])
 def similarity():
-    w1=flask.request.form['similarity_w1'].strip()
-    w2=flask.request.form['similarity_w2'].strip()
+    global loaded_models
+    values=val2dict(flask.request.values)
+    w1=values['similarity_w1'].strip()
+    w2=values['similarity_w2'].strip()
+    wv=loaded_models[values['model_name']]
     sim=wv.similarity(w1,w2)
     if sim is None:
-        tbl=flask.render_template("empty_result_tbl.html",word=u" and ".join(w for w in (w1,w2) if w not in wv.w_to_dim))
+        tbl=flask.render_template("empty_result_tbl.html",word=" and ".join(w for w in (w1,w2) if w not in wv.w_to_dim))
     else:
-    	tbl=flask.render_template("result_tbl.html",words=[unicode(sim)])
+    	tbl=flask.render_template("result_tbl.html",words=[str(sim)])
     return json.dumps({'tbl':tbl});
 
 
