@@ -75,7 +75,7 @@
   
 
      <h2 class="form-wordinput-heading">Word analogy</h2>
-     <p> This demo computes word analogy: the first word is to the second word like the third word is to which word? Try for example <em>ilma - lintu - vesi (air - bird - water)</em> which would expect to return <em>kala (fish)</em> because fish is to water like birs is to air. Other cases could be for example <em>sammakko - hyppää - kala</em>. This is however only a toy to show what is possible - most of the time the analogy does not work particularly well (at least for the Finnish data).</p>
+     <p> This demo computes word analogy: the first word is to the second word like the third word is to which word? Try for example <em>ilma - lintu - vesi (air - bird - water)</em> which would expect to return <em>kala (fish)</em> because fish is to water like bird is to air. Other cases could be for example <em>sammakko - hyppää - kala</em>. This is however only a toy to show what is possible - most of the time the analogy does not work particularly well (at least for the Finnish data).</p>
      <form class="form-inline" id="analogyform" role="form">
          <input type="text" class="form-control autocomplete" id="analogy_src1" name="analogy_src1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
 	 <input type="text" class="form-control autocomplete" id="analogy_target1" name="analogy_target1" placeholder="Type in a word" autocorrect="off" autocapitalize="none"/>
@@ -102,12 +102,12 @@
      <p>The demo is based on word embeddings induced using
      the <a href="https://code.google.com/archive/p/word2vec/">word2vec</a>
      method, trained on 4.5B words of Finnish from
-     the <a href="http://bionlp.utu.fi/finnish-internet-parsebank.html">Finnish
+     the <a href="https://turkunlp.org/finnish_nlp.html#parsebank">Finnish
      Internet Parsebank</a> project and over 2B words of Finnish from Suomi24. On the Parsebank project page you
      can also download the vectors in binary form. The software behind
      the demo is
      open-source, <a href="https://github.com/fginter/w2v_demo">available
-     on GitHub</a>. The demo is maintained by the <a href="http://bionlp.utu.fi/">Turku BioNLP group</a>.</p>
+     on GitHub</a>. The demo is maintained by the <a href="http://turkunlp.org/">Turku NLP group</a>.</p>
    </div>
  </body>
  </html>
