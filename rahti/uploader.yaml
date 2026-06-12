@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: uploader
+spec:
+  containers:
+    - name: uploader
+      image: docker.io/instrumentisto/rsync-ssh
+      command: ["sleep", "infinity"]
+      volumeMounts:
+        - name: data
+          mountPath: /data
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: w2v-demo-data
