@@ -1,0 +1,4 @@
+flask
+pyyaml
+numpy
+gunicorn
