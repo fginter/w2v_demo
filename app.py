@@ -3,6 +3,7 @@ from flask import Flask
 import flask
 import json
 import yaml
+import os
 
 MAX_RANK_MEM=5000
 MAX_RANK=10000
@@ -15,6 +16,7 @@ try:
 except ImportError:
     pass #no config_local
 
+DATADIR=os.environ.get("W2V_DATA_DIR","./data")
 app = Flask(__name__)
 
 @app.route("/")
@@ -118,12 +120,12 @@ def similarity():
 #Init stuff (I'm sure there's a better way)
 loaded_models={} #name -> wv
 model_names=[]   #list of names in order of appearance
-with open("models.yaml") as f:
-    models=yaml.load(f)
+with open(os.path.join(DATADIR,"models.yaml")) as f:
+    models=yaml.load(f,Loader=yaml.Loader)
     for m in models:
         if not m.get("enable",True):
             continue
-        loaded_models[m["name"]]=lwvlib.WV.load(m["location"],m.get("MAX_RANK_MEM",MAX_RANK_MEM),m.get("MAX_RANK",MAX_RANK))
+        loaded_models[m["name"]]=lwvlib.WV.load(os.path.join(DATADIR,m["location"]),m.get("MAX_RANK_MEM",MAX_RANK_MEM),m.get("MAX_RANK",MAX_RANK))
         model_names.append(m["name"])
         build_autocomplete_index(loaded_models[m["name"]])
 
